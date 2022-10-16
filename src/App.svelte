@@ -27,7 +27,7 @@
 		}
 		setTimeout(() => {
 			window.scrollTo(0, document.body.scrollHeight);
-		}, 200);
+		}, 100);
 	}
 
 	function showNextQuestion() {
