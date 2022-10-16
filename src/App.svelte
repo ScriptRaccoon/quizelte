@@ -68,61 +68,63 @@
 				}}
 				out:fly={{ x: 200, duration: 400, easing: cubicIn }}
 			>
-				<small class="progress">{progress}</small>
-				<h2>{currentQuestion?.question}</h2>
-				<div class="answers">
-					{#each currentQuestion?.answers as answer, index}
-						<input
-							id="input{index}"
-							disabled={submitted}
-							type="radio"
-							bind:group={choice}
-							name="question{currentQuestionIndex}"
-							value={index}
-						/>
-						<label
-							class="answer"
-							for="input{index}"
-							class:correct={submitted &&
-								index ==
-									currentQuestion.correctAnswer}
-							class:incorrect={submitted &&
-								choice == index &&
-								index !=
-									currentQuestion.correctAnswer}
-						>
-							{answer}
-						</label>
-					{/each}
-				</div>
-				{#if submitted}
-					<div
-						transition:scale|local={{ duration: 300 }}
-						class="result"
-					>
-						<p>{resultMessage}</p>
-						{#if currentQuestion.explanation}
-							<p>{currentQuestion.explanation}</p>
-						{/if}
+				<div class="container">
+					<small class="progress">{progress}</small>
+					<h2>{currentQuestion?.question}</h2>
+					<div class="answers">
+						{#each currentQuestion?.answers as answer, index}
+							<input
+								id="input{index}"
+								disabled={submitted}
+								type="radio"
+								bind:group={choice}
+								name="question{currentQuestionIndex}"
+								value={index}
+							/>
+							<label
+								class="answer"
+								for="input{index}"
+								class:correct={submitted &&
+									index ==
+										currentQuestion.correctAnswer}
+								class:incorrect={submitted &&
+									choice == index &&
+									index !=
+										currentQuestion.correctAnswer}
+							>
+								{answer}
+							</label>
+						{/each}
 					</div>
-				{/if}
-				<menu>
-					<button
-						disabled={submitted || choice == null}
-						type="submit">Submit</button
-					>
-					<button
-						disabled={!submitted}
-						type="button"
-						on:click={showNextQuestion}
-					>
-						{#if currentQuestionIndex < questions.length - 1}
-							Next
-						{:else}
-							Show results
-						{/if}
-					</button>
-				</menu>
+					{#if submitted}
+						<div
+							transition:scale|local={{ duration: 300 }}
+							class="result"
+						>
+							<p>{resultMessage}</p>
+							{#if currentQuestion.explanation}
+								<p>{currentQuestion.explanation}</p>
+							{/if}
+						</div>
+					{/if}
+					<menu>
+						<button
+							disabled={submitted || choice == null}
+							type="submit">Submit</button
+						>
+						<button
+							disabled={!submitted}
+							type="button"
+							on:click={showNextQuestion}
+						>
+							{#if currentQuestionIndex < questions.length - 1}
+								Next
+							{:else}
+								Show results
+							{/if}
+						</button>
+					</menu>
+				</div>
 			</form>
 		{/key}
 	{:else}
@@ -144,10 +146,14 @@
 	form {
 		position: absolute;
 		width: 100%;
-		background-color: var(--form-color);
-		padding: 0px 20px;
-		border-radius: 10px;
-		box-shadow: 0px 0px 20px #fff4;
+		padding-bottom: 20px;
+
+		.container {
+			background-color: var(--form-color);
+			padding: 0px 20px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px #fff4;
+		}
 
 		.progress {
 			transform: translate(15px, -24px);
