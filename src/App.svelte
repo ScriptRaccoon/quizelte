@@ -61,7 +61,7 @@
 					x: -200,
 					duration: 400,
 					easing: cubicOut,
-					delay: 400,
+					delay: 420,
 				}}
 				out:fly={{ x: 200, duration: 400, easing: cubicIn }}
 			>
@@ -133,13 +133,12 @@
 
 <style lang="scss">
 	main {
-		position: relative;
 		width: min(95vw, 500px);
 		margin: 0px auto;
+		padding-bottom: 20px;
 	}
 
 	form {
-		position: absolute;
 		width: 100%;
 		background-color: var(--form-color);
 		padding: 0px 20px;
