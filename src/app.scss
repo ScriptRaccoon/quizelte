@@ -13,6 +13,11 @@
 	box-sizing: border-box;
 }
 
+body,
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	background-color: var(--bg-color);

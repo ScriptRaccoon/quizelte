@@ -25,6 +25,7 @@
 			resultMessage = "Sorry, that's not correct.";
 			incorrectQuestions.push(currentQuestionIndex);
 		}
+		window.scrollTo(0, document.body.scrollHeight);
 	}
 
 	function showNextQuestion() {
